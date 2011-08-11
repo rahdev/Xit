@@ -8,6 +8,8 @@
 #import "Xit.h"
 #import "XTHistoryView.h"
 
+#import <ObjectiveGit/ObjectiveGit.h>
+
 @implementation Xit
 
 @synthesize selectedCommit;
@@ -22,6 +24,7 @@
 //        repoURL=[NSURL URLWithString:@"/Users/administrator/tmp/testrepo"];
 
         gitCMD = @"/usr/bin/git";  // XXXX
+		repository = [[GTRepository repositoryWithURL:repoURL] retain];
     }
     return self;
 }
@@ -32,6 +35,7 @@
     if (self) {
         repoURL = absoluteURL;
         gitCMD = @"/usr/bin/git";  // XXXX
+		repository = [[GTRepository repositoryWithURL:repoURL] retain];
     }
     return self;
 }

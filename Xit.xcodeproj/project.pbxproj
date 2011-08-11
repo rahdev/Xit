@@ -31,6 +31,7 @@
 		31C7C13413ECC74C00A65FE9 /* XTHistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31C7C13213ECC74C00A65FE9 /* XTHistoryView.xib */; };
 		31F1E87F13D3B51200F3B317 /* GITBasic+Xit.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BC055713D1133000C3CF1A /* GITBasic+Xit.m */; };
 		31F1E88313D3DCAC00F3B317 /* XTSideBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F1E88213D3DCAC00F3B317 /* XTSideBarItem.m */; };
+		898BC48C13F41EA800B98E14 /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898BC48313F41E0E00B98E14 /* ObjectiveGit.framework */; };
 		C3D6CF1B13D4B18900D35D4D /* XTLocalBranchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6CF1A13D4B18900D35D4D /* XTLocalBranchItem.m */; };
 		C3D6CF1E13D4B74400D35D4D /* XTTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6CF1D13D4B74400D35D4D /* XTTagItem.m */; };
 		C3D6CF2113D4D5B200D35D4D /* XTRemotesItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6CF2013D4D5B200D35D4D /* XTRemotesItem.m */; };
@@ -61,6 +62,41 @@
 			remoteGlobalIDString = 31355B0513EA139600C33AAB;
 			remoteInfo = html.theme.default;
 		};
+		898BC48213F41E0E00B98E14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 898BC47513F41E0D00B98E14 /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = ObjectiveGit;
+		};
+		898BC48413F41E0E00B98E14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 898BC47513F41E0D00B98E14 /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BDD8AEDF1313311100CB5D40;
+			remoteInfo = Tests;
+		};
+		898BC48613F41E0E00B98E14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 898BC47513F41E0D00B98E14 /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 04DB4645133AB57600D9C624;
+			remoteInfo = "ObjectiveGit-iOS";
+		};
+		898BC48813F41E0E00B98E14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 898BC47513F41E0D00B98E14 /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BDD9C3D5133BA556003708E7;
+			remoteInfo = "Tests-iOS";
+		};
+		898BC48A13F41E7B00B98E14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 898BC47513F41E0D00B98E14 /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = ObjectiveGit;
+		};
 		C3FA472213D0F8E300AC4F9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C3FA46F313D0F8E200AC4F9B /* Project object */;
@@ -74,7 +110,7 @@
 		311429B513EB600100A7DF05 /* XTCommitViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTCommitViewControllerTest.h; sourceTree = "<group>"; };
 		311429B613EB600100A7DF05 /* XTCommitViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTCommitViewControllerTest.m; sourceTree = "<group>"; };
 		313014A813EB653F0017A2A1 /* XTSideBarDataSorceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTSideBarDataSorceTests.h; sourceTree = "<group>"; };
-		313014A913EB653F0017A2A1 /* XTSideBarDataSorceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTSideBarDataSorceTests.m; sourceTree = "<group>"; };
+		313014A913EB653F0017A2A1 /* XTSideBarDataSorceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = XTSideBarDataSorceTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		313014AD13EB65DB0017A2A1 /* XTHistoryDataSorceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTHistoryDataSorceTests.h; sourceTree = "<group>"; };
 		313014AE13EB65DB0017A2A1 /* XTHistoryDataSorceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTHistoryDataSorceTests.m; sourceTree = "<group>"; };
 		31355B0613EA139600C33AAB /* html.theme.default.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = html.theme.default.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,7 +121,7 @@
 		31355B1813EA189200C33AAB /* diff.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = diff.css; sourceTree = "<group>"; };
 		3174966313DF896E004C5546 /* XTHistoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = XTHistoryDataSource.h; path = Xit/XTHistoryDataSource.h; sourceTree = "<group>"; tabWidth = 4; };
 		3174966413DF896E004C5546 /* XTHistoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; name = XTHistoryDataSource.m; path = Xit/XTHistoryDataSource.m; sourceTree = "<group>"; tabWidth = 4; };
-		3174966713DF8A0C004C5546 /* XTSideBarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; name = XTSideBarDataSource.m; path = Xit/XTSideBarDataSource.m; sourceTree = "<group>"; tabWidth = 4; };
+		3174966713DF8A0C004C5546 /* XTSideBarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = XTSideBarDataSource.m; path = Xit/XTSideBarDataSource.m; sourceTree = "<group>"; tabWidth = 4; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3174966C13DFF94C004C5546 /* XTHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = XTHistoryItem.h; path = Xit/XTHistoryItem.h; sourceTree = "<group>"; tabWidth = 4; };
 		3174966D13DFF94C004C5546 /* XTHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; name = XTHistoryItem.m; path = Xit/XTHistoryItem.m; sourceTree = "<group>"; tabWidth = 4; };
 		31A8939A13E9D5B4008BE0C2 /* XTCommitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = XTCommitViewController.h; sourceTree = "<group>"; tabWidth = 4; };
@@ -111,6 +147,7 @@
 		31F1E87813D3AC6D00F3B317 /* XTSideBarDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = XTSideBarDataSource.h; path = Xit/XTSideBarDataSource.h; sourceTree = "<group>"; tabWidth = 4; };
 		31F1E88113D3DCAC00F3B317 /* XTSideBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = XTSideBarItem.h; path = Xit/XTSideBarItem.h; sourceTree = "<group>"; tabWidth = 4; };
 		31F1E88213D3DCAC00F3B317 /* XTSideBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; name = XTSideBarItem.m; path = Xit/XTSideBarItem.m; sourceTree = "<group>"; tabWidth = 4; };
+		898BC47513F41E0D00B98E14 /* ObjectiveGitFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGitFramework.xcodeproj; path = "objective-git/ObjectiveGitFramework.xcodeproj"; sourceTree = "<group>"; };
 		C3355E1413F32815008D14B8 /* uncrustify.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = uncrustify.cfg; sourceTree = "<group>"; };
 		C3BC055613D1133000C3CF1A /* GITBasic+Xit.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = "GITBasic+Xit.h"; sourceTree = "<group>"; };
 		C3BC055713D1133000C3CF1A /* GITBasic+Xit.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = "GITBasic+Xit.m"; sourceTree = "<group>"; };
@@ -169,6 +206,7 @@
 			files = (
 				31A893A013E9DA5B008BE0C2 /* WebKit.framework in Frameworks */,
 				C3FA470113D0F8E200AC4F9B /* Cocoa.framework in Frameworks */,
+				898BC48C13F41EA800B98E14 /* ObjectiveGit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +319,17 @@
 			name = items;
 			sourceTree = "<group>";
 		};
+		898BC47613F41E0D00B98E14 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				898BC48313F41E0E00B98E14 /* ObjectiveGit.framework */,
+				898BC48513F41E0E00B98E14 /* Tests.app */,
+				898BC48713F41E0E00B98E14 /* libObjectiveGit-iOS.a */,
+				898BC48913F41E0E00B98E14 /* Tests-iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C3D6D30F13E8E63A00AF50B0 /* GitX */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +354,7 @@
 				C3FA470613D0F8E200AC4F9B /* Xit */,
 				C3FA472413D0F8E300AC4F9B /* XitTests */,
 				31355B0913EA139700C33AAB /* html.theme.default */,
+				898BC47513F41E0D00B98E14 /* ObjectiveGitFramework.xcodeproj */,
 				C3FA46FF13D0F8E200AC4F9B /* Frameworks */,
 				C3FA46FD13D0F8E200AC4F9B /* Products */,
 				C3355E1413F32815008D14B8 /* uncrustify.cfg */,
@@ -432,6 +482,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				898BC48B13F41E7B00B98E14 /* PBXTargetDependency */,
 				31355B1613EA13A900C33AAB /* PBXTargetDependency */,
 			);
 			name = Xit;
@@ -478,6 +529,12 @@
 			mainGroup = C3FA46F113D0F8E200AC4F9B;
 			productRefGroup = C3FA46FD13D0F8E200AC4F9B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 898BC47613F41E0D00B98E14 /* Products */;
+					ProjectRef = 898BC47513F41E0D00B98E14 /* ObjectiveGitFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C3FA46FB13D0F8E200AC4F9B /* Xit */,
@@ -486,6 +543,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		898BC48313F41E0E00B98E14 /* ObjectiveGit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjectiveGit.framework;
+			remoteRef = 898BC48213F41E0E00B98E14 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		898BC48513F41E0E00B98E14 /* Tests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Tests.app;
+			remoteRef = 898BC48413F41E0E00B98E14 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		898BC48713F41E0E00B98E14 /* libObjectiveGit-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libObjectiveGit-iOS.a";
+			remoteRef = 898BC48613F41E0E00B98E14 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		898BC48913F41E0E00B98E14 /* Tests-iOS.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Tests-iOS.app";
+			remoteRef = 898BC48813F41E0E00B98E14 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		31355B0413EA139600C33AAB /* Resources */ = {
@@ -637,6 +725,11 @@
 			isa = PBXTargetDependency;
 			target = 31355B0513EA139600C33AAB /* html.theme.default */;
 			targetProxy = 31355B1513EA13A900C33AAB /* PBXContainerItemProxy */;
+		};
+		898BC48B13F41E7B00B98E14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ObjectiveGit;
+			targetProxy = 898BC48A13F41E7B00B98E14 /* PBXContainerItemProxy */;
 		};
 		C3FA472313D0F8E300AC4F9B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

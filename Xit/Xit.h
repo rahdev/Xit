@@ -7,6 +7,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class GTRepository;
 @class XTHistoryView;
 @class XTStageViewController;
 
@@ -15,6 +16,7 @@
     IBOutlet XTStageViewController *stageView;
     IBOutlet NSTabView *tabs;
     @private
+	GTRepository *repository;
     FSEventStreamRef stream;
     NSURL *repoURL;
     NSString *gitCMD;
@@ -23,6 +25,7 @@
     NSDictionary *refsIndex;
 }
 
+@property (readonly) GTRepository *repository;
 @property (assign) NSString *selectedCommit;
 @property (assign) NSDictionary *refsIndex;
 
