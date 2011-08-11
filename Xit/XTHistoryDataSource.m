@@ -56,58 +56,58 @@
 
 - (void) reload {
     dispatch_async(queue, ^{
-                       NSMutableArray *newItems = [NSMutableArray array];
-
-                       [repo    getCommitsWithArgs:[NSArray arrayWithObjects:@"--pretty=format:%H%n%P%n%ct%n%ce%n%s", @"--reverse", @"--tags", @"--all", @"--topo-order", nil]
-                        enumerateCommitsUsingBlock:^(NSString * line) {
-
-                            NSArray *comps = [line componentsSeparatedByString:@"\n"];
+		NSMutableArray *newItems = [NSMutableArray array];
+		void (^commitBlock)(NSString *) = ^(NSString *line) {
+			NSArray *comps = [line componentsSeparatedByString:@"\n"];
 //          NSLog(@"line: %@",[comps componentsJoinedByString:@" - "]);
-                            XTHistoryItem *item = [[XTHistoryItem alloc] init];
-                            if ([comps count] == 5) {
-                                item.sha = [comps objectAtIndex:0];
-                                NSString *parentsStr = [comps objectAtIndex:1];
-                                if (parentsStr.length > 0) {
-                                    NSArray *parents = [parentsStr componentsSeparatedByString:@" "];
-                                    [parents enumerateObjectsWithOptions:0 usingBlock:^(id obj, NSUInteger idx, BOOL * stop) {
-                                         NSString *parentSha = (NSString *)obj;
-                                         XTHistoryItem *parent = [index objectForKey:parentSha];
-                                         if (parent != nil) {
-                                             [item.parents addObject:parent];
-                                         } else {
-                                             NSLog (@"parent with sha:'%@' not found for commit with sha:'%@' idx=%lu", parentSha, item.sha, item.index);
-                                         }
-                                     }];
-                                }
-                                item.date = [comps objectAtIndex:2];
-                                item.email = [comps objectAtIndex:3];
-                                item.subject = [comps objectAtIndex:4];
-                                [newItems addObject:item];
-                                [index setObject:item forKey:item.sha];
-                            } else {
-                                [NSException raise:@"Invalid commint" format:@"Line ***\n%@\n*** is invalid", line];
-                            }
-
-                        }
-                                             error:nil];
-
-                       NSUInteger i = 0;
-                       NSUInteger j = [newItems count] - 1;
-                       while (i < j) {
-                           [newItems exchangeObjectAtIndex:i++ withObjectAtIndex:j--];
-                       }
-
-                       PBGitGrapher *grapher = [[PBGitGrapher alloc] init];
-                       [newItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * stop) {
-                            XTHistoryItem *item = (XTHistoryItem *)obj;
-                            [grapher decorateCommit:item];
-                            item.index = idx;
-                        }];
-
-                       NSLog (@"-> %lu", [newItems count]);
-                       items = newItems;
-                       [table reloadData];
-                   });
+			XTHistoryItem *item = [[XTHistoryItem alloc] init];
+			if ([comps count] == 5) {
+				item.sha = [comps objectAtIndex:0];
+				NSString *parentsStr = [comps objectAtIndex:1];
+				if (parentsStr.length > 0) {
+					NSArray *parents = [parentsStr componentsSeparatedByString:@" "];
+					[parents enumerateObjectsWithOptions:0 usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+						NSString *parentSha = (NSString *)obj;
+						XTHistoryItem *parent = [index objectForKey:parentSha];
+						if (parent != nil) {
+							[item.parents addObject:parent];
+						} else {
+							NSLog (@"parent with sha:'%@' not found for commit with sha:'%@' idx=%lu", parentSha, item.sha, item.index);
+						}
+					}];
+				}
+				item.date = [comps objectAtIndex:2];
+				item.email = [comps objectAtIndex:3];
+				item.subject = [comps objectAtIndex:4];
+				[newItems addObject:item];
+				[index setObject:item forKey:item.sha];
+			} else {
+				[NSException raise:@"Invalid commint" format:@"Line ***\n%@\n*** is invalid", line];
+			}
+			
+		};
+		
+		[repo    getCommitsWithArgs:[NSArray arrayWithObjects:@"--pretty=format:%H%n%P%n%ct%n%ce%n%s", @"--reverse", @"--tags", @"--all", @"--topo-order", nil]
+		 enumerateCommitsUsingBlock:commitBlock
+							  error:nil];
+		
+		NSUInteger i = 0;
+		NSUInteger j = [newItems count] - 1;
+		while (i < j) {
+			[newItems exchangeObjectAtIndex:i++ withObjectAtIndex:j--];
+		}
+		
+		PBGitGrapher *grapher = [[PBGitGrapher alloc] init];
+		[newItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+			XTHistoryItem *item = (XTHistoryItem *)obj;
+			[grapher decorateCommit:item];
+			item.index = idx;
+		}];
+		
+		NSLog (@"-> %lu", [newItems count]);
+		items = newItems;
+		[table reloadData];
+	});
 }
 
 // only for unit test
