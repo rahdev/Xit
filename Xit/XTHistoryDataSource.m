@@ -11,6 +11,8 @@
 #import "PBGitHistoryGrapher.h"
 #import "PBGitRevisionCell.h"
 
+#import <ObjectiveGit/ObjectiveGit.h>
+
 @implementation XTHistoryDataSource
 
 @synthesize items;
@@ -56,6 +58,26 @@
 
 - (void) reload {
     dispatch_async(queue, ^{
+#if 1
+		NSError *error = nil;
+		[[repo repository] enumerateCommitsBeginningAtSha:nil error:&error usingBlock:^(GTCommit *commit, BOOL *stop) {
+			XTHistoryItem *item = [[XTHistoryItem alloc] init];
+			item.sha = [commit sha];
+			item.date = [commit commitDate];
+			item.subject = [commit message];
+			item.email = [[commit author] name];
+			for (GTCommit *parent in [commit parents]) {
+				XTHistoryItem *parentItem = [index objectForKey:parent.sha];
+				if (parentItem != nil) {
+					[item.parents addObject:parentItem];
+				} else {
+					NSLog (@"parent with sha:'%@' not found for commit with sha:'%@' idx=%lu", parent.sha, item.sha, item.index);
+				}
+			}
+			[newItems addObject:item];
+			[index setObject:item forKey:item.sha];
+		}];
+#else
 		NSMutableArray *newItems = [NSMutableArray array];
 		void (^commitBlock)(NSString *) = ^(NSString *line) {
 			NSArray *comps = [line componentsSeparatedByString:@"\n"];
@@ -96,6 +118,7 @@
 		while (i < j) {
 			[newItems exchangeObjectAtIndex:i++ withObjectAtIndex:j--];
 		}
+#endif
 		
 		PBGitGrapher *grapher = [[PBGitGrapher alloc] init];
 		[newItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
