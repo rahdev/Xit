@@ -14,6 +14,7 @@
 
 @synthesize selectedCommit;
 @synthesize refsIndex;
+@synthesize repository;
 
 - (id) init {
     self = [super init];
@@ -24,7 +25,9 @@
 //        repoURL=[NSURL URLWithString:@"/Users/administrator/tmp/testrepo"];
 
         gitCMD = @"/usr/bin/git";  // XXXX
-		repository = [[GTRepository repositoryWithURL:repoURL] retain];
+		
+		NSError *error = nil;
+		repository = [[GTRepository repositoryWithURL:repoURL error:&error] retain];
     }
     return self;
 }
@@ -35,7 +38,9 @@
     if (self) {
         repoURL = absoluteURL;
         gitCMD = @"/usr/bin/git";  // XXXX
-		repository = [[GTRepository repositoryWithURL:repoURL] retain];
+		
+		NSError *error = nil;
+		repository = [[GTRepository repositoryWithURL:repoURL error:&error] retain];
     }
     return self;
 }

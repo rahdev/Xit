@@ -58,12 +58,17 @@
 
 - (void) reload {
     dispatch_async(queue, ^{
+		NSMutableArray *newItems = [NSMutableArray array];
 #if 1
 		NSError *error = nil;
-		[[repo repository] enumerateCommitsBeginningAtSha:nil error:&error usingBlock:^(GTCommit *commit, BOOL *stop) {
+		NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+		
+		[formatter setDateStyle:NSDateFormatterShortStyle];
+		[formatter setTimeStyle:NSDateFormatterShortStyle];
+		[[repo repository] enumerateCommitsBeginningAtSha:nil sortOptions:GTEnumeratorOptionsTopologicalSort|GTEnumeratorOptionsReverse error:&error usingBlock:^(GTCommit *commit, BOOL *stop) {
 			XTHistoryItem *item = [[XTHistoryItem alloc] init];
 			item.sha = [commit sha];
-			item.date = [commit commitDate];
+			item.date = [formatter stringFromDate:[commit commitDate]];
 			item.subject = [commit message];
 			item.email = [[commit author] name];
 			for (GTCommit *parent in [commit parents]) {
@@ -78,7 +83,6 @@
 			[index setObject:item forKey:item.sha];
 		}];
 #else
-		NSMutableArray *newItems = [NSMutableArray array];
 		void (^commitBlock)(NSString *) = ^(NSString *line) {
 			NSArray *comps = [line componentsSeparatedByString:@"\n"];
 //          NSLog(@"line: %@",[comps componentsJoinedByString:@" - "]);
@@ -112,13 +116,14 @@
 		[repo    getCommitsWithArgs:[NSArray arrayWithObjects:@"--pretty=format:%H%n%P%n%ct%n%ce%n%s", @"--reverse", @"--tags", @"--all", @"--topo-order", nil]
 		 enumerateCommitsUsingBlock:commitBlock
 							  error:nil];
+#endif
 		
+		// Reverse the order
 		NSUInteger i = 0;
 		NSUInteger j = [newItems count] - 1;
 		while (i < j) {
 			[newItems exchangeObjectAtIndex:i++ withObjectAtIndex:j--];
 		}
-#endif
 		
 		PBGitGrapher *grapher = [[PBGitGrapher alloc] init];
 		[newItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
