@@ -79,7 +79,7 @@
 					NSLog (@"parent with sha:'%@' not found for commit with sha:'%@' idx=%lu", parent.sha, item.sha, item.index);
 				}
 			}
-			[newItems addObject:item];
+			[newItems insertObject:item atIndex:0];
 			[index setObject:item forKey:item.sha];
 		}];
 #else
@@ -116,7 +116,6 @@
 		[repo    getCommitsWithArgs:[NSArray arrayWithObjects:@"--pretty=format:%H%n%P%n%ct%n%ce%n%s", @"--reverse", @"--tags", @"--all", @"--topo-order", nil]
 		 enumerateCommitsUsingBlock:commitBlock
 							  error:nil];
-#endif
 		
 		// Reverse the order
 		NSUInteger i = 0;
@@ -124,6 +123,7 @@
 		while (i < j) {
 			[newItems exchangeObjectAtIndex:i++ withObjectAtIndex:j--];
 		}
+#endif
 		
 		PBGitGrapher *grapher = [[PBGitGrapher alloc] init];
 		[newItems enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
