@@ -45,7 +45,7 @@
              NSString *name = [info lastObject];
              NSString *status = [[[info objectAtIndex:0] componentsSeparatedByString:@" "] lastObject];
              status = [status substringToIndex:1];
-             XTFileIndexInfo *fileInfo = [[XTFileIndexInfo alloc] initWithName:name andStatus:status];
+             XTFileIndexInfo *fileInfo = [[XTFileIndexInfo alloc] initWithName:name status:status icon:nil];
              [items addObject:fileInfo];
          }
      }];
@@ -57,7 +57,7 @@
     [files enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * stop) {
          NSString *file = (NSString *)obj;
          if (file.length > 0) {
-             XTFileIndexInfo *fileInfo = [[XTFileIndexInfo alloc] initWithName:file andStatus:@"?"];
+             XTFileIndexInfo *fileInfo = [[XTFileIndexInfo alloc] initWithName:file status:@"?" icon:nil];
              [items addObject:fileInfo];
          }
      }];

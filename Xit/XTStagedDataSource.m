@@ -44,7 +44,7 @@
              NSString *name = [info lastObject];
              NSString *status = [[[info objectAtIndex:0] componentsSeparatedByString:@" "] lastObject];
              status = [status substringToIndex:1];
-             XTFileIndexInfo *fileInfo = [[XTFileIndexInfo alloc] initWithName:name andStatus:status];
+             XTFileIndexInfo *fileInfo = [[XTFileIndexInfo alloc] initWithName:name status:status icon:nil];
              [items addObject:fileInfo];
          }
      }];

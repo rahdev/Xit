@@ -3,7 +3,6 @@
 //  Xit
 //
 //  Created by German Laullon on 09/08/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "XTFileIndexInfo.h"
@@ -12,12 +11,14 @@
 
 @synthesize name;
 @synthesize status;
+@synthesize icon;
 
-- (id) initWithName:(NSString *)theName andStatus:(NSString *)theStatus {
+- (id) initWithName:(NSString *)theName status:(NSString *)theStatus icon:(NSImage *)theIcon {
     self = [super init];
     if (self) {
         self.name = theName;
         self.status = theStatus;
+        self.icon = theIcon;
     }
 
     return self;
