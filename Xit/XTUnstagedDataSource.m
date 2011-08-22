@@ -3,7 +3,6 @@
 //  Xit
 //
 //  Created by German Laullon on 09/08/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "XTUnstagedDataSource.h"
@@ -31,6 +30,17 @@
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 }
 
+- (NSImage *) iconForFile:(NSString *)file {
+	 NSString *path = [[[repo repoURL] path] stringByAppendingPathComponent:file];
+	 NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile:path];
+	 
+	 if (icon == nil) {
+		NSString *type = (NSString*) UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (CFStringRef)[path pathExtension], NULL);
+		icon = [[NSWorkspace sharedWorkspace] iconForFileType:type];
+	 }
+	 return icon;
+}
+
 - (void) reload {
     [items removeAllObjects];
 
@@ -38,14 +48,18 @@
     NSString *filesStr = [[NSString alloc] initWithData:output encoding:NSUTF8StringEncoding];
     filesStr = [filesStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSArray *files = [filesStr componentsSeparatedByString:@"\n"];
+
     [files enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * stop) {
          NSString *file = (NSString *)obj;
          NSArray *info = [file componentsSeparatedByString:@"\t"];
+
          if (info.count > 1) {
              NSString *name = [info lastObject];
              NSString *status = [[[info objectAtIndex:0] componentsSeparatedByString:@" "] lastObject];
+			 NSImage *icon = [self iconForFile:name];
+
              status = [status substringToIndex:1];
-             XTFileIndexInfo *fileInfo = [[XTFileIndexInfo alloc] initWithName:name status:status icon:nil];
+             XTFileIndexInfo *fileInfo = [[XTFileIndexInfo alloc] initWithName:name status:status icon:icon];
              [items addObject:fileInfo];
          }
      }];
@@ -57,7 +71,8 @@
     [files enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * stop) {
          NSString *file = (NSString *)obj;
          if (file.length > 0) {
-             XTFileIndexInfo *fileInfo = [[XTFileIndexInfo alloc] initWithName:file status:@"?" icon:nil];
+			 NSImage *icon = [self iconForFile:file];
+             XTFileIndexInfo *fileInfo = [[XTFileIndexInfo alloc] initWithName:file status:@"?" icon:icon];
              [items addObject:fileInfo];
          }
      }];

@@ -115,7 +115,8 @@
     [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * stop) {
          XTFileIndexInfo *info = obj;
          NSString *status = [expected objectForKey:info.name];
-         STAssertEqualObjects (info.status, status, @"incorrect state file(%lu):%@", idx, info.name);
+         STAssertEqualObjects(info.status, status, @"incorrect state file(%lu):%@", idx, info.name);
+		 STAssertNotNil(info.icon, @"missing icon for %@", info.name);
      }];
 
     [xit addFile:@"--all"];
@@ -139,7 +140,7 @@
     [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * stop) {
          XTFileIndexInfo *info = obj;
          NSString *status = [expected objectForKey:info.name];
-         STAssertEqualObjects (info.status, status, @"incorrect state file(%lu):%@", idx, info.name);
+         STAssertEqualObjects(info.status, status, @"incorrect state file(%lu):%@", idx, info.name);
      }];
 }
 
