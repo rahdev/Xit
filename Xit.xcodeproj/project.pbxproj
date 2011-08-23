@@ -31,6 +31,7 @@
 		31C7C13413ECC74C00A65FE9 /* XTHistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31C7C13213ECC74C00A65FE9 /* XTHistoryView.xib */; };
 		31F1E87F13D3B51200F3B317 /* GITBasic+Xit.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BC055713D1133000C3CF1A /* GITBasic+Xit.m */; };
 		31F1E88313D3DCAC00F3B317 /* XTSideBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F1E88213D3DCAC00F3B317 /* XTSideBarItem.m */; };
+		8988C5051403E6C600835142 /* XTStageDataSourceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8988C5041403E6C600835142 /* XTStageDataSourceBase.m */; };
 		C343F91113F4908E009C928A /* XTHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = C343F91013F4908E009C928A /* XTHTML.m */; };
 		C3D6CF1B13D4B18900D35D4D /* XTLocalBranchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6CF1A13D4B18900D35D4D /* XTLocalBranchItem.m */; };
 		C3D6CF1E13D4B74400D35D4D /* XTTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6CF1D13D4B74400D35D4D /* XTTagItem.m */; };
@@ -112,6 +113,8 @@
 		31F1E87813D3AC6D00F3B317 /* XTSideBarDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = XTSideBarDataSource.h; path = Xit/XTSideBarDataSource.h; sourceTree = "<group>"; tabWidth = 4; };
 		31F1E88113D3DCAC00F3B317 /* XTSideBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = XTSideBarItem.h; path = Xit/XTSideBarItem.h; sourceTree = "<group>"; tabWidth = 4; };
 		31F1E88213D3DCAC00F3B317 /* XTSideBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; name = XTSideBarItem.m; path = Xit/XTSideBarItem.m; sourceTree = "<group>"; tabWidth = 4; };
+		8988C5031403E6C600835142 /* XTStageDataSourceBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTStageDataSourceBase.h; sourceTree = "<group>"; };
+		8988C5041403E6C600835142 /* XTStageDataSourceBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTStageDataSourceBase.m; sourceTree = "<group>"; };
 		C3355E1413F32815008D14B8 /* uncrustify.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = uncrustify.cfg; sourceTree = "<group>"; };
 		C343F90F13F4908E009C928A /* XTHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTHTML.h; sourceTree = "<group>"; };
 		C343F91013F4908E009C928A /* XTHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTHTML.m; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 		31C62D9A13F25A3600845A9B /* StageView */ = {
 			isa = PBXGroup;
 			children = (
+				8988C5031403E6C600835142 /* XTStageDataSourceBase.h */,
+				8988C5041403E6C600835142 /* XTStageDataSourceBase.m */,
 				31C6669F13F3AEF3000E4073 /* XTStagedDataSource.h */,
 				31C666A013F3AEF3000E4073 /* XTStagedDataSource.m */,
 				31C62D9B13F25A5D00845A9B /* XTUnstagedDataSource.h */,
@@ -621,6 +626,7 @@
 				31C666A113F3AEF3000E4073 /* XTStagedDataSource.m in Sources */,
 				31C666A513F3B55A000E4073 /* XTStageViewController.m in Sources */,
 				C343F91113F4908E009C928A /* XTHTML.m in Sources */,
+				8988C5051403E6C600835142 /* XTStageDataSourceBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
