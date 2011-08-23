@@ -10,6 +10,7 @@
 #import "XTFileIndexInfo.h"
 #import "Xit.h"
 #import "XTHTML.h"
+#import "XTFileIndexCell.h"
 
 @implementation XTStageViewController
 
@@ -162,5 +163,26 @@
             [self showUnstageFile:item];
         }
     }
+}
+
+- (void) tableView:(NSTableView *)table willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+    XTFileIndexInfo *item;
+
+    if ([table isEqualTo:stageTable]) {
+        item = [[stageDS items] objectAtIndex:rowIndex];
+    } else if ([table isEqualTo:unstageTable]) {
+        item = [[unstageDS items] objectAtIndex:rowIndex];
+    }
+
+    NSString *path = [[[repo repoURL] path] stringByAppendingPathComponent:item.name];
+    NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile:path];
+    if (icon == nil) {
+        NSString *type = (NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (CFStringRef)[path pathExtension], NULL);
+        icon = [[NSWorkspace sharedWorkspace] iconForFileType:type];
+    }
+
+    NSLog(@"-- aCell: %@ -- icon: %@", aCell, icon);
+    ((XTFileIndexCell *)aCell).fileInfo = item;
+    ((XTFileIndexCell *)aCell).icon = icon;
 }
 @end

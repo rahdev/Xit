@@ -31,6 +31,7 @@
 		31C7C13413ECC74C00A65FE9 /* XTHistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31C7C13213ECC74C00A65FE9 /* XTHistoryView.xib */; };
 		31F1E87F13D3B51200F3B317 /* GITBasic+Xit.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BC055713D1133000C3CF1A /* GITBasic+Xit.m */; };
 		31F1E88313D3DCAC00F3B317 /* XTSideBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F1E88213D3DCAC00F3B317 /* XTSideBarItem.m */; };
+		C33CF48A140437B900B29800 /* XTFileIndexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C33CF489140437B900B29800 /* XTFileIndexCell.m */; };
 		C343F91113F4908E009C928A /* XTHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = C343F91013F4908E009C928A /* XTHTML.m */; };
 		C3D6CF1B13D4B18900D35D4D /* XTLocalBranchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6CF1A13D4B18900D35D4D /* XTLocalBranchItem.m */; };
 		C3D6CF1E13D4B74400D35D4D /* XTTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D6CF1D13D4B74400D35D4D /* XTTagItem.m */; };
@@ -113,6 +114,8 @@
 		31F1E88113D3DCAC00F3B317 /* XTSideBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = XTSideBarItem.h; path = Xit/XTSideBarItem.h; sourceTree = "<group>"; tabWidth = 4; };
 		31F1E88213D3DCAC00F3B317 /* XTSideBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; name = XTSideBarItem.m; path = Xit/XTSideBarItem.m; sourceTree = "<group>"; tabWidth = 4; };
 		C3355E1413F32815008D14B8 /* uncrustify.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = uncrustify.cfg; sourceTree = "<group>"; };
+		C33CF488140437B900B29800 /* XTFileIndexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTFileIndexCell.h; sourceTree = "<group>"; };
+		C33CF489140437B900B29800 /* XTFileIndexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTFileIndexCell.m; sourceTree = "<group>"; };
 		C343F90F13F4908E009C928A /* XTHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTHTML.h; sourceTree = "<group>"; };
 		C343F91013F4908E009C928A /* XTHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTHTML.m; sourceTree = "<group>"; };
 		C3BC055613D1133000C3CF1A /* GITBasic+Xit.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = "GITBasic+Xit.h"; sourceTree = "<group>"; };
@@ -224,6 +227,8 @@
 				31C666A013F3AEF3000E4073 /* XTStagedDataSource.m */,
 				31C62D9B13F25A5D00845A9B /* XTUnstagedDataSource.h */,
 				31C62D9C13F25A5D00845A9B /* XTUnstagedDataSource.m */,
+				C33CF488140437B900B29800 /* XTFileIndexCell.h */,
+				C33CF489140437B900B29800 /* XTFileIndexCell.m */,
 				31C62D9F13F2638600845A9B /* XTFileIndexInfo.h */,
 				31C62DA013F2638600845A9B /* XTFileIndexInfo.m */,
 				31C666A213F3B55A000E4073 /* XTStageViewController.h */,
@@ -621,6 +626,7 @@
 				31C666A113F3AEF3000E4073 /* XTStagedDataSource.m in Sources */,
 				31C666A513F3B55A000E4073 /* XTStageViewController.m in Sources */,
 				C343F91113F4908E009C928A /* XTHTML.m in Sources */,
+				C33CF48A140437B900B29800 /* XTFileIndexCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

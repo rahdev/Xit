@@ -30,6 +30,7 @@
     self = [super init];
     if (self) {
         gitCMD = [Xit gitPath];
+        repoURL = [NSURL URLWithString:@"/Users/administrator/xcode/Xit"];         // Default only for test.
     }
     return self;
 }
