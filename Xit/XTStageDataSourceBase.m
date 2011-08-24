@@ -28,6 +28,7 @@
         NSString *type = (NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (CFStringRef)[path pathExtension], NULL);
         icon = [[NSWorkspace sharedWorkspace] iconForFileType:type];
     }
+    [icon setSize:NSMakeSize(16, 16)];
     return icon;
 }
 

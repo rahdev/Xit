@@ -24,8 +24,9 @@
          if (info.count > 1) {
              NSString *name = [info lastObject];
              NSString *status = [[[info objectAtIndex:0] componentsSeparatedByString:@" "] lastObject];
+             NSImage *icon = [self iconForFile:name];
              status = [status substringToIndex:1];
-             XTFileIndexInfo *fileInfo = [[XTFileIndexInfo alloc] initWithName:name status:status icon:nil];
+             XTFileIndexInfo *fileInfo = [[XTFileIndexInfo alloc] initWithName:name status:status icon:icon];
              [items addObject:fileInfo];
          }
      }];
