@@ -453,7 +453,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3FA473413D0F8E300AC4F9B /* Build configuration list for PBXNativeTarget "XitTests" */;
 			buildPhases = (
-				C3355E1313F327D6008D14B8 /* Run uncrustify Script */,
 				C3FA471B13D0F8E300AC4F9B /* Sources */,
 				C3FA471C13D0F8E300AC4F9B /* Frameworks */,
 				C3FA471D13D0F8E300AC4F9B /* Resources */,
@@ -561,20 +560,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "PATH=${PATH}:/usr/local/bin\nif $(which -s uncrustify); then\n    for name in \"*.h\" \"*.pch\"\n    do\n        find . -name $name -exec uncrustify -c uncrustify.cfg --replace --no-backup -l OC+ {} \\;\n    done\n    for name in \"*.m\" \"*.mm\"\n    do\n        find . -name $name -exec uncrustify -c uncrustify.cfg --replace --no-backup {} \\;\n    done\nelse\n    echo \"warning: uncrustify not found\"\nfi";
-		};
-		C3355E1313F327D6008D14B8 /* Run uncrustify Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run uncrustify Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if $(which -s uncrustify); then\nfind . -name \"*[mh]\" -exec uncrustify -c uncrustify.cfg --replace --no-backup {} \\;\nelse\necho \"warning: uncrustify not found\"\nfi";
 		};
 		C3FA471E13D0F8E300AC4F9B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
