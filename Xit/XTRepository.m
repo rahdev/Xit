@@ -5,6 +5,7 @@
 
 #import "XTRepository.h"
 #import "NSMutableDictionary+MultiObjectForKey.h"
+#import <ObjectiveGit/ObjectiveGit.h>
 
 NSString *XTRepositoryChangedNotification = @"xtrepochanged";
 NSString *XTErrorOutputKey = @"output";
@@ -18,6 +19,7 @@ NSString *XTPathsKey = @"paths";
 @synthesize queue;
 @synthesize activeTasks;
 @synthesize repoURL;
+@synthesize objgitRepo;
 
 + (NSString *)gitPath {
     NSArray *paths = [NSArray arrayWithObjects:
@@ -36,6 +38,11 @@ NSString *XTPathsKey = @"paths";
 - (id)initWithURL:(NSURL *)url {
     self = [super init];
     if (self != nil) {
+        NSError *error;
+
+        objgitRepo = [GTRepository repositoryWithURL:url error:&error];
+        if (objgitRepo == nil)
+          return nil;
         gitCMD = [XTRepository gitPath];
         repoURL = url;
         NSMutableString *qName = [NSMutableString stringWithString:@"com.xit.queue."];
@@ -87,6 +94,65 @@ NSString *XTPathsKey = @"paths";
                 });
         CFRunLoopRun();
     } while (keepLooping);
+}
+
+// Manually sort the commits because the libgit2 revwalker doesn't always put
+// newer branches at the top
+- (NSArray*)sortedCommits {
+    GTEnumerator *enumerator = self.objgitRepo.enumerator;
+    GTCommit *commit = nil;
+    NSError *error = nil;
+
+    [enumerator reset];
+    enumerator.options = GTEnumeratorOptionsNone;
+    [enumerator pushAllRefsWithError:&error];
+    if (error != nil) {
+        // handle error
+        return nil;
+    }
+
+    NSMutableArray *sourceList = [NSMutableArray array];
+
+    while ((commit = [enumerator nextObjectWithError:&error]) != nil) {
+        [sourceList addObject:commit];
+    }
+    if (error != nil) {
+        // handle error
+        return nil;
+    }
+
+    NSArray *refs = [self.objgitRepo referenceNamesWithError:&error];
+
+    if (error != nil) {
+        // handle error
+        return nil;
+    }
+    // sort refs by date
+    for (NSString *ref in refs) {
+        GTObject *object = [self.objgitRepo lookupObjectByRefspec:ref error:&error];
+
+        if (error != nil) {
+            // handle error
+            return nil;
+        }
+        if (![object isKindOfClass:[GTCommit class]])
+            continue;
+
+        GTCommit *commit = (GTCommit *)object;
+        NSMutableArray *mergeList = [NSMutableArray array];
+
+        while (commit != nil) {
+            // add object to the list
+            // if it has multiple parents, add the others to the merge list
+            if ([commit.parents count] > 0) {
+                if ([commit.parents count] > 1)
+                commit = [commit.parents objectAtIndex:0];
+            }
+            else
+                break;
+        }
+        for (commit in mergeList)
+    }
 }
 
 - (void)getCommitsWithArgs:(NSArray *)logArgs enumerateCommitsUsingBlock:(void (^)(NSString *))block error:(NSError **)error {

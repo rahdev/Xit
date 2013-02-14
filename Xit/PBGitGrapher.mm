@@ -12,6 +12,15 @@
 
 using namespace std;
 
+// The ObjectiveGit headers can't be included because they're not compatible
+// with C++.
+@interface GTCommit : NSObject {}
+
+- (NSArray *)parents;
+- (NSString *)sha;
+
+@end
+
 @implementation PBGitGrapher
 
 #define MAX_LANES 100
@@ -33,13 +42,13 @@ void add_line(struct PBGitGraphLine *lines, int *nLines, int upper, size_t from,
     lines[(*nLines)++] = a;
 }
 
-- (void)decorateCommit:(XTHistoryItem *)commit {
+- (void)decorateCommit:(XTHistoryItem *)item {
     int i = 0;
     size_t newPos = -1;
 
     std::list<PBGitLane *> *currentLanes = new std::list<PBGitLane *>;
     std::list<PBGitLane *> *previousLanes = (std::list<PBGitLane *> *)pl;
-    NSArray *parents = [commit parents];
+    NSArray *parents = [item.commit parents];
     NSUInteger nParents = [parents count];
 
     NSUInteger maxLines = (previousLanes->size() + nParents + 2) * 2;
@@ -48,7 +57,7 @@ void add_line(struct PBGitGraphLine *lines, int *nLines, int upper, size_t from,
 
     PBGitLane *currentLane = NULL;
     BOOL didFirst = NO;
-    NSString *commit_oid = [commit sha];
+    NSString *commit_oid = [item sha];
 
     // First, iterate over earlier columns and pass through any that don't want this commit
     if (previous != nil) {
@@ -86,8 +95,8 @@ void add_line(struct PBGitGraphLine *lines, int *nLines, int upper, size_t from,
 
     // If we already did the first parent, don't do so again
     if (!didFirst && currentLanes->size() < MAX_LANES && nParents) {
-        XTHistoryItem *parent = [parents objectAtIndex:0];
-        PBGitLane *newLane = new PBGitLane(parent.sha);
+        GTCommit *parent = [parents objectAtIndex:0];
+        PBGitLane *newLane = new PBGitLane([parent sha]);
         currentLanes->push_back(newLane);
         newPos = currentLanes->size();
         add_line(lines, &currentLine, 0, newPos, newPos, newLane->index());
@@ -101,8 +110,8 @@ void add_line(struct PBGitGraphLine *lines, int *nLines, int upper, size_t from,
 
     int parentIndex = 0;
     for (parentIndex = 1; parentIndex < nParents; ++parentIndex) {
-        XTHistoryItem *parent = [parents objectAtIndex:parentIndex];
-        NSString *parentSha = parent.sha;
+        GTCommit *parent = [parents objectAtIndex:parentIndex];
+        NSString *parentSha = [parent sha];
         int i = 0;
         BOOL was_displayed = NO;
         std::list<PBGitLane *>::iterator it = currentLanes->begin();
@@ -127,8 +136,8 @@ void add_line(struct PBGitGraphLine *lines, int *nLines, int upper, size_t from,
         add_line(lines, &currentLine, 0, currentLanes->size(), newPos, newLane->index());
     }
 
-    if (commit.lineInfo) {
-        previous = commit.lineInfo;
+    if (item.lineInfo != nil) {
+        previous = item.lineInfo;
         previous.position = newPos;
         previous.lines = lines;
     } else
@@ -156,7 +165,7 @@ void add_line(struct PBGitGraphLine *lines, int *nLines, int upper, size_t from,
     delete previousLanes;
 
     pl = currentLanes;
-    commit.lineInfo = previous;
+    item.lineInfo = previous;
 }
 
 - (void)dealloc {

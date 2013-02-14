@@ -73,6 +73,9 @@
 		DD07B07816A5D2A80012AC19 /* XTSideBarOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD07B07716A5D2A80012AC19 /* XTSideBarOutlineView.m */; };
 		DD07B08616B202E00012AC19 /* XTRemoteItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD07B08516B202E00012AC19 /* XTRemoteItem.m */; };
 		DD07B08916B313A60012AC19 /* XTRefFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DD07B08816B313A60012AC19 /* XTRefFormatter.m */; };
+		DD0C9A6016E0FF4F00B9FEE3 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0C9A5D16E0FF4F00B9FEE3 /* libssl.dylib */; };
+		DD0C9A6116E0FF4F00B9FEE3 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0C9A5E16E0FF4F00B9FEE3 /* libcrypto.dylib */; };
+		DD0C9A6216E0FF4F00B9FEE3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0C9A5F16E0FF4F00B9FEE3 /* libz.dylib */; };
 		DD3AC5B41611215C00238F58 /* XTRemoteBranchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3AC5B31611215C00238F58 /* XTRemoteBranchItem.m */; };
 		DD592093156EEE64005FBB0F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3FA470013D0F8E200AC4F9B /* Cocoa.framework */; };
 		DD592096156EEF40005FBB0F /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD592095156EEF40005FBB0F /* OCMock.framework */; };
@@ -81,6 +84,7 @@
 		DDD00551158FF551001B055E /* branch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD00550158FF551001B055E /* branch@2x.png */; };
 		DDD9E33615953952007EF2F6 /* XTStagingDataSourceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD9E33515953952007EF2F6 /* XTStagingDataSourceBase.m */; };
 		DDDA447215B0EA4700DF407B /* XTRepository+Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDA447115B0EA4700DF407B /* XTRepository+Parsing.m */; };
+		DDDE34E116C5D41A0097BCA1 /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDE34BF16C5D2F40097BCA1 /* ObjectiveGit.framework */; };
 		DDE55DDF1613C6C000CCAC03 /* XTModDateTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE55DDE1613C6C000CCAC03 /* XTModDateTracker.m */; };
 		DDF9BB3A162E29C3004588B6 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = DDF9BB38162E29C3004588B6 /* tag.png */; };
 		DDF9BB3B162E29C3004588B6 /* tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDF9BB39162E29C3004588B6 /* tag@2x.png */; };
@@ -100,6 +104,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = C3FA46FB13D0F8E200AC4F9B;
 			remoteInfo = Xit;
+		};
+		DDDE34BE16C5D2F40097BCA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDDE34B616C5D2F40097BCA1 /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = ObjectiveGit;
+		};
+		DDDE34C016C5D2F40097BCA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDDE34B616C5D2F40097BCA1 /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 04DB4645133AB57600D9C624;
+			remoteInfo = "ObjectiveGit-iOS";
+		};
+		DDDE34C216C5D2F40097BCA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDDE34B616C5D2F40097BCA1 /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88F05A6B16011E5400B7AD1D;
+			remoteInfo = ObjectiveGitTests;
+		};
+		DDDE34C516C5D3600097BCA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDDE34B616C5D2F40097BCA1 /* ObjectiveGitFramework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = ObjectiveGit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -238,6 +270,9 @@
 		DD07B08516B202E00012AC19 /* XTRemoteItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XTRemoteItem.m; path = Xit/XTRemoteItem.m; sourceTree = "<group>"; };
 		DD07B08716B313A60012AC19 /* XTRefFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTRefFormatter.h; sourceTree = "<group>"; };
 		DD07B08816B313A60012AC19 /* XTRefFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTRefFormatter.m; sourceTree = "<group>"; };
+		DD0C9A5D16E0FF4F00B9FEE3 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libssl.dylib; sourceTree = "<absolute>"; };
+		DD0C9A5E16E0FF4F00B9FEE3 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
+		DD0C9A5F16E0FF4F00B9FEE3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libz.dylib; sourceTree = "<absolute>"; };
 		DD3AC5B21611215C00238F58 /* XTRemoteBranchItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XTRemoteBranchItem.h; path = Xit/XTRemoteBranchItem.h; sourceTree = "<group>"; };
 		DD3AC5B31611215C00238F58 /* XTRemoteBranchItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XTRemoteBranchItem.m; path = Xit/XTRemoteBranchItem.m; sourceTree = "<group>"; };
 		DD579ADB15D08978007E4AFE /* NSDate+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extensions.h"; sourceTree = "<group>"; };
@@ -250,6 +285,7 @@
 		DDD9E33515953952007EF2F6 /* XTStagingDataSourceBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTStagingDataSourceBase.m; sourceTree = "<group>"; };
 		DDDA447015B0E97000DF407B /* XTRepository+Parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XTRepository+Parsing.h"; sourceTree = "<group>"; };
 		DDDA447115B0EA4700DF407B /* XTRepository+Parsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XTRepository+Parsing.m"; sourceTree = "<group>"; };
+		DDDE34B616C5D2F40097BCA1 /* ObjectiveGitFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGitFramework.xcodeproj; path = "objective-git/ObjectiveGitFramework.xcodeproj"; sourceTree = "<group>"; };
 		DDE55DDD1613C6C000CCAC03 /* XTModDateTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTModDateTracker.h; sourceTree = "<group>"; };
 		DDE55DDE1613C6C000CCAC03 /* XTModDateTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTModDateTracker.m; sourceTree = "<group>"; };
 		DDF9BB38162E29C3004588B6 /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
@@ -269,8 +305,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDDE34E116C5D41A0097BCA1 /* ObjectiveGit.framework in Frameworks */,
 				31A893A013E9DA5B008BE0C2 /* WebKit.framework in Frameworks */,
 				C3FA470113D0F8E200AC4F9B /* Cocoa.framework in Frameworks */,
+				DD0C9A6016E0FF4F00B9FEE3 /* libssl.dylib in Frameworks */,
+				DD0C9A6116E0FF4F00B9FEE3 /* libcrypto.dylib in Frameworks */,
+				DD0C9A6216E0FF4F00B9FEE3 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +494,7 @@
 		C3FA46F113D0F8E200AC4F9B = {
 			isa = PBXGroup;
 			children = (
+				DDDE34B616C5D2F40097BCA1 /* ObjectiveGitFramework.xcodeproj */,
 				C3FA470613D0F8E200AC4F9B /* Xit */,
 				C3FA472413D0F8E300AC4F9B /* XitTests */,
 				31355B0913EA139700C33AAB /* html.theme.default */,
@@ -477,6 +518,9 @@
 		C3FA46FF13D0F8E200AC4F9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD0C9A5D16E0FF4F00B9FEE3 /* libssl.dylib */,
+				DD0C9A5E16E0FF4F00B9FEE3 /* libcrypto.dylib */,
+				DD0C9A5F16E0FF4F00B9FEE3 /* libz.dylib */,
 				31A8939F13E9DA5B008BE0C2 /* WebKit.framework */,
 				C3FA470013D0F8E200AC4F9B /* Cocoa.framework */,
 				31355B0713EA139700C33AAB /* CoreFoundation.framework */,
@@ -575,6 +619,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DDDE34B716C5D2F40097BCA1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DDDE34BF16C5D2F40097BCA1 /* ObjectiveGit.framework */,
+				DDDE34C116C5D2F40097BCA1 /* libObjectiveGit-iOS.a */,
+				DDDE34C316C5D2F40097BCA1 /* ObjectiveGitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -609,6 +663,7 @@
 			);
 			dependencies = (
 				31355B1613EA13A900C33AAB /* PBXTargetDependency */,
+				DDDE34C616C5D3600097BCA1 /* PBXTargetDependency */,
 			);
 			name = Xit;
 			productName = Xit;
@@ -654,6 +709,12 @@
 			mainGroup = C3FA46F113D0F8E200AC4F9B;
 			productRefGroup = C3FA46FD13D0F8E200AC4F9B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DDDE34B716C5D2F40097BCA1 /* Products */;
+					ProjectRef = DDDE34B616C5D2F40097BCA1 /* ObjectiveGitFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C3FA46FB13D0F8E200AC4F9B /* Xit */,
@@ -662,6 +723,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		DDDE34BF16C5D2F40097BCA1 /* ObjectiveGit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjectiveGit.framework;
+			remoteRef = DDDE34BE16C5D2F40097BCA1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DDDE34C116C5D2F40097BCA1 /* libObjectiveGit-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libObjectiveGit-iOS.a";
+			remoteRef = DDDE34C016C5D2F40097BCA1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DDDE34C316C5D2F40097BCA1 /* ObjectiveGitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ObjectiveGitTests.octest;
+			remoteRef = DDDE34C216C5D2F40097BCA1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		31355B0413EA139600C33AAB /* Resources */ = {
@@ -836,6 +921,11 @@
 			target = C3FA46FB13D0F8E200AC4F9B /* Xit */;
 			targetProxy = C3FA472213D0F8E300AC4F9B /* PBXContainerItemProxy */;
 		};
+		DDDE34C616C5D3600097BCA1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ObjectiveGit;
+			targetProxy = DDDE34C516C5D3600097BCA1 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -976,10 +1066,11 @@
 				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/objective-git/libgit2/include\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lgcov";
@@ -998,9 +1089,13 @@
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Xit/Xit-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/objective-git/libgit2/build\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					$inherited,
+					"-lgit2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
@@ -1046,10 +1141,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/objective-git/libgit2/include\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
@@ -1064,10 +1160,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/objective-git/libgit2/include\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = "";
 				SDKROOT = macosx10.7;
@@ -1085,9 +1182,13 @@
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Xit/Xit-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Xit/Xit-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/objective-git/libgit2/build\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					$inherited,
+					"-lgit2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
@@ -1105,9 +1206,13 @@
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Xit/Xit-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Xit/Xit-Info.plist";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/objective-git/libgit2/build\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					$inherited,
+					"-lgit2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;

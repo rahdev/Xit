@@ -8,6 +8,7 @@
 #import "XTFileListHistoryDataSource.h"
 #import "XTRepository.h"
 #import "XTHistoryItem.h"
+#import <ObjectiveGit/ObjectiveGit.h>
 
 
 @implementation XTFileListHistoryDataSource
@@ -64,35 +65,9 @@
         return;
     dispatch_async(repo.queue, ^{
                        NSMutableArray *newItems = [NSMutableArray array];
-                       __block int idx = 0;
+                       //__block int idx = 0;
 
-                       [repo    getCommitsWithArgs:[NSArray arrayWithObjects:@"--pretty=format:%H%n%h%n%ct%n%ce%n%s", @"--tags", @"--all", @"--topo-order", nil]
-                        enumerateCommitsUsingBlock:^(NSString * line) {
-
-                            NSArray *comps = [line componentsSeparatedByString:@"\n"];
-                            // If Guard Malloc is on, it pollutes the output
-                            if ([[comps objectAtIndex:0] hasPrefix:@"GuardMalloc["]) {
-                                NSMutableArray *filteredComps = [comps mutableCopy];
-                                while ([[filteredComps objectAtIndex:0] hasPrefix:@"GuardMalloc["])
-                                [filteredComps removeObjectAtIndex:0];
-                                comps = filteredComps;
-                            }
-                            XTHistoryItem *item = [[XTHistoryItem alloc] init];
-                            if ([comps count] == 5) {
-                                item.sha = [comps objectAtIndex:0];
-                                item.shortSha = [comps objectAtIndex:1];
-                                item.date = [comps objectAtIndex:2];
-                                item.email = [comps objectAtIndex:3];
-                                item.subject = [comps objectAtIndex:4];
-                                item.index = idx++;
-                                [newItems addObject:item];
-                                [index setObject:item forKey:item.sha];
-                            } else {
-                                [NSException raise:@"Invalid commint" format:@"Line ***\n%@\n*** is invalid", line];
-                            }
-
-                        }
-                                             error:nil];
+                       // TODO
 
                        NSLog (@"-> %lu", [newItems count]);
                        items = newItems;
@@ -109,7 +84,7 @@
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
     XTHistoryItem *item = [items objectAtIndex:rowIndex];
 
-    return item.shortSha;
+    return [[item.commit sha] substringToIndex:6];
 }
 
 #pragma mark - NSTableViewDelegate

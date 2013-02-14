@@ -7,13 +7,14 @@
 
 #import "XTAppDelegate.h"
 #import "XTDocument.h"
+#include <git2.h>
 
 @implementation XTAppDelegate
 
 - (id)init {
     self = [super init];
     if (self) {
-        // Initialization code here.
+        git_threads_init();
     }
 
     return self;

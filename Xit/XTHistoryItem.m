@@ -6,29 +6,37 @@
 //
 
 #import "XTHistoryItem.h"
+#import <ObjectiveGit/ObjectiveGit.h>
 
 @implementation XTHistoryItem
 
 @synthesize repo;
-@synthesize sha;
-@synthesize shortSha;
-@synthesize parents;
-@synthesize date;
-@synthesize email;
-@synthesize subject;
+@synthesize commit;
 @synthesize lineInfo;
 @synthesize index;
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        self.parents = [NSMutableArray array];
-    }
++ (XTHistoryItem *)itemWithRepository:(XTRepository *)repo commit:(GTCommit *)commit {
+    XTHistoryItem *item = [[self alloc] init];
 
-    return self;
+    item->repo = repo;
+    item->commit = commit;
+    return item;
+}
+
+- (NSString *)sha {
+    return [commit sha];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
     return self;
 }
+
+@end
+
+@implementation GTCommit (XTAdditions)
+
+- (NSString *)sha {
+    return [NSString git_stringWithOid:git_commit_id([self git_commit])];
+}
+
 @end

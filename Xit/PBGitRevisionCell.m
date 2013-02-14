@@ -10,6 +10,7 @@
 #import "XTRepository.h"
 #import "XTRemoteBranchItem.h"
 #import "XTSideBarItem.h"
+#import <ObjectiveGit/ObjectiveGit.h>
 
 static const int kColumnWidth = 10;
 
@@ -166,7 +167,7 @@ static const int kColumnWidth = 10;
         }
     }
 
-    [textCell setObjectValue:[self.objectValue subject]];
+    [textCell setObjectValue:[[self.objectValue commit] message]];
     [textCell setHighlighted:[self isHighlighted]];
     [textCell drawWithFrame:rect inView:view];
 }

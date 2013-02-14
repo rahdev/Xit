@@ -12,6 +12,13 @@
 #import "PBGitGrapher.h"
 #import "PBGitHistoryGrapher.h"
 #import "NSDate+Extensions.h"
+#import <ObjectiveGit/ObjectiveGit.h>
+
+@interface GTEnumerator (XTAdditions)
+
+- (BOOL)pushAllRefsWithError:(NSError *__autoreleasing *)error;
+
+@end
 
 @implementation XTHistoryDataSource
 
@@ -67,50 +74,27 @@
     if (repo == nil)
         return;
     dispatch_async(repo.queue, ^{
+        NSDate *startTime = [NSDate date];
         NSArray *args = [NSArray arrayWithObjects:@"--pretty=format:%H%n%P%n%cD%n%ce%n%s", @"--reverse", @"--tags", @"--all", @"--topo-order", nil];
         NSMutableArray *newItems = [NSMutableArray array];
+        NSError *error = nil;
 
         [XTStatusView updateStatus:@"Loading..." command:[args componentsJoinedByString:@" "] output:nil forRepository:repo];
-        [repo getCommitsWithArgs:args enumerateCommitsUsingBlock:^(NSString * line) {
-            // Guard Malloc pollutes the output; skip it
-            if ([line hasPrefix:@"GuardMalloc[git"])
-                return;
-            [XTStatusView updateStatus:nil command:nil output:line forRepository:repo];
 
-            NSArray *comps = [line componentsSeparatedByString:@"\n"];
-            XTHistoryItem *item = [[XTHistoryItem alloc] init];
-            if ([comps count] == 5) {
-                item.sha = [comps objectAtIndex:0];
-                NSString *parentsStr = [comps objectAtIndex:1];
-                if (parentsStr.length > 0) {
-                    NSArray *parents = [parentsStr componentsSeparatedByString:@" "];
-                    [parents enumerateObjectsWithOptions:0 usingBlock:^(id obj, NSUInteger idx, BOOL * stop) {
-                         NSString *parentSha = (NSString *)obj;
-                         XTHistoryItem *parent = [index objectForKey:parentSha];
-                         if (parent != nil) {
-                             [item.parents addObject:parent];
-                         } else {
-                             NSLog(@"parent with sha:'%@' not found for commit with sha:'%@' idx=%lu", parentSha, item.sha, item.index);
-                         }
-                     }];
-                }
-                item.repo = repo;
-                item.date = [NSDate dateFromRFC2822:[comps objectAtIndex:2]];
-                item.email = [comps objectAtIndex:3];
-                item.subject = [comps objectAtIndex:4];
-                [newItems addObject:item];
-                [index setObject:item forKey:item.sha];
-            } else {
-                [NSException raise:@"Invalid commint" format:@"Line ***\n%@\n*** is invalid", line];
-            }
-        } error:nil];
+        GTEnumerator *enumerator = repo.objgitRepo.enumerator;
+        GTCommit *commit = nil;
 
-        if ([newItems count] > 0) {
-           NSUInteger i = 0;
-           NSUInteger j = [newItems count] - 1;
-           while (i < j) {
-               [newItems exchangeObjectAtIndex:i++ withObjectAtIndex:j--];
-           }
+        [enumerator reset];
+        enumerator.options = GTEnumeratorOptionsTopologicalSort;
+        [enumerator pushAllRefsWithError:&error];
+        if (error != nil) {
+            // TODO: error
+        }
+        while ((commit = [enumerator nextObjectWithError:&error]) != nil) {
+            [newItems addObject:[XTHistoryItem itemWithRepository:repo commit:commit]];
+        }
+        if (error != nil) {
+            // TODO: error
         }
 
         PBGitGrapher *grapher = [[PBGitGrapher alloc] init];
@@ -124,7 +108,8 @@
         NSLog (@"-> %lu", [newItems count]);
         items = newItems;
         [table reloadData];
-        });
+        NSLog(@">>> Reload time: %f", [startTime timeIntervalSinceDate:[NSDate date]]);
+    });
 }
 
 #pragma mark - NSTableViewDataSource
@@ -135,8 +120,44 @@
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
     XTHistoryItem *item = [items objectAtIndex:rowIndex];
+    NSString *key = aTableColumn.identifier;
+    
+    if ([key isEqualToString:@"subject"])
+        return item.commit.message;
+    if ([key isEqualToString:@"email"])
+        return item.commit.author.email;
+    if ([key isEqualToString:@"date"])
+        return item.commit.author.time;
 
-    return [item valueForKey:aTableColumn.identifier];
+    return [item.commit valueForKey:aTableColumn.identifier];
+}
+
+@end
+
+static int StashIterator(size_t index, const char *message, const git_oid *stash_oid, void *payload) {
+    return git_revwalk_push((git_revwalk*)payload, stash_oid);
+}
+
+@implementation GTEnumerator (XTAdditions)
+
+- (BOOL)pushAllRefsWithError:(NSError *__autoreleasing *)error {
+    // walk is a private property
+    git_revwalk *walk = (__bridge git_revwalk *)[self performSelector:@selector(walk)];
+    int gitError = 0;
+
+    do {
+        if ((gitError = git_revwalk_push_glob(walk, "refs/heads/*")) < GIT_OK) break;
+        if ((gitError = git_revwalk_push_glob(walk, "refs/remotes/*")) < GIT_OK) break;
+        if ((gitError = git_revwalk_push_glob(walk, "refs/tags/*")) < GIT_OK) break;
+        if ((gitError = git_stash_foreach(self.repository.git_repository, StashIterator, walk)) < GIT_OK) break;
+    } while (false);
+	if(gitError < GIT_OK) {
+		if (error != NULL)
+			*error = [NSError git_errorFor:gitError withAdditionalDescription:@"Failed to push refs onto rev walker."];
+		return NO;
+	}
+	
+	return YES;
 }
 
 @end

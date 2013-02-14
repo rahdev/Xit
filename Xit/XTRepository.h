@@ -10,10 +10,13 @@ extern NSString *XTErrorOutputKey;
 extern NSString *XTErrorArgsKey;
 extern NSString *XTPathsKey;
 
+@class GTRepository;
+
 @interface XTRepository : NSObject
 {
     @private
     NSURL *repoURL;
+    GTRepository *objgitRepo;
     NSString *gitCMD;
     NSString *selectedCommit;
     NSString *cachedHeadRef, *cachedHeadSHA, *cachedBranch;
@@ -54,6 +57,7 @@ extern NSString *XTPathsKey;
 @property (readonly) dispatch_queue_t queue;
 @property (readonly) NSMutableArray *activeTasks;
 @property (readonly) NSURL *repoURL;
+@property (readonly) GTRepository *objgitRepo;
 
 @end
 
