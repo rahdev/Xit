@@ -76,6 +76,7 @@
 		DD96C931175B76990003A30C /* splitter.png in Resources */ = {isa = PBXBuildFile; fileRef = DD96C930175B76990003A30C /* splitter.png */; };
 		DD96C939175ECE690003A30C /* XTFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD96C938175ECE690003A30C /* XTFileViewController.m */; };
 		DD96C9A6176977470003A30C /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD96C99A176976FE0003A30C /* ObjectiveGit.framework */; };
+		DD96C9C7176CF68E0003A30C /* GTRemote+Xit.m in Sources */ = {isa = PBXBuildFile; fileRef = DD96C9C6176CF68E0003A30C /* GTRemote+Xit.m */; };
 		DD997DD31739CC9300C7DF82 /* stash.png in Resources */ = {isa = PBXBuildFile; fileRef = DD997DD11739CC9300C7DF82 /* stash.png */; };
 		DD997DD41739CC9300C7DF82 /* stash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD997DD21739CC9300C7DF82 /* stash@2x.png */; };
 		DD997DDA173B409500C7DF82 /* HistoryView Menus.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD997DD8173B409500C7DF82 /* HistoryView Menus.xib */; };
@@ -305,6 +306,8 @@
 		DD96C937175ECE690003A30C /* XTFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTFileViewController.h; sourceTree = "<group>"; };
 		DD96C938175ECE690003A30C /* XTFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTFileViewController.m; sourceTree = "<group>"; };
 		DD96C98F176976FC0003A30C /* ObjectiveGitFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveGitFramework.xcodeproj; path = "objective-git/ObjectiveGitFramework.xcodeproj"; sourceTree = "<group>"; };
+		DD96C9C5176CF68E0003A30C /* GTRemote+Xit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTRemote+Xit.h"; sourceTree = "<group>"; };
+		DD96C9C6176CF68E0003A30C /* GTRemote+Xit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTRemote+Xit.m"; sourceTree = "<group>"; };
 		DD997DD11739CC9300C7DF82 /* stash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stash.png; sourceTree = "<group>"; };
 		DD997DD21739CC9300C7DF82 /* stash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stash@2x.png"; sourceTree = "<group>"; };
 		DD997DD9173B409500C7DF82 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/HistoryView Menus.xib"; sourceTree = "<group>"; };
@@ -399,6 +402,8 @@
 				DDE55DDE1613C6C000CCAC03 /* XTModDateTracker.m */,
 				DD9C1B8D160239DD0001FE9B /* XTRefToken.h */,
 				DD9C1B8E160239DD0001FE9B /* XTRefToken.m */,
+				DD96C9C5176CF68E0003A30C /* GTRemote+Xit.h */,
+				DD96C9C6176CF68E0003A30C /* GTRemote+Xit.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -898,6 +903,7 @@
 				DDD4708116F3E7B000CA76FF /* XTPreviewItem.m in Sources */,
 				89D47943170894A200C04D89 /* NSAttributedString+XTExtensions.m in Sources */,
 				DD96C939175ECE690003A30C /* XTFileViewController.m in Sources */,
+				DD96C9C7176CF68E0003A30C /* GTRemote+Xit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
